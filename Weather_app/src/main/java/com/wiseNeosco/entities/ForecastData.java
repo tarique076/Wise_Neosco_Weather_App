@@ -44,7 +44,7 @@ public class ForecastData {
     private int cnt;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "forecast_id")
+    @JoinColumn(name = "forecastId")
     private List<ForecastItem> list;
 
     @Embedded

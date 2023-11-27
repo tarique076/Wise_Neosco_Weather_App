@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Weather App</title>
+<script src="https://kit.fontawesome.com/87218ca82a.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="" th:href="@{/css/weatherApp.css}">
+<script type="text/javascript" src="" th:src="@{/js/weatherApp.js}"></script>
 </head>
 <body>
-	<h1 th:text="${message}">Hello, Thymeleaf!</h1>
+	<div class="container">
+		
+		<div id="app_head">		
+			<h1>Weather Details</h1>
+			<!-- Container for the digital clock -->
+		    <div id="digital-clock"></div>
+		</div>
+	    <input type="text" id="city" placeholder="Enter City Name">
+    	<button  onclick="getWeather()" id="search">Search</button>
+    	<button id="daily" onclick="openHourlyModal()">Hourly Forecast</button>
+    	
+	    <div id="weather_container">
+        </div>
+        
+        <div id="hourlyModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeHourlyModal()">&times;</span>
+                <div id="hourlyForecastContainer"></div>
+            </div>
+        </div>
+	
+	</div>
+
 </body>
 </html>

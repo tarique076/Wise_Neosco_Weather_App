@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,7 +42,8 @@ public class ForecastItem {
     @Embedded
     private Main main;
 
-    @OneToMany(mappedBy = "forecastItem")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "forecastItemId")
     private List<Weather> weather;
 
     @Embedded

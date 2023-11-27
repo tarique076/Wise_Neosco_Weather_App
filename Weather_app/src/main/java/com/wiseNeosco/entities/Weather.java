@@ -33,8 +33,8 @@ public class Weather {
 //    @JoinColumn(name = "weather_info_id")
 //    private WeatherInfo weatherInfo;
     
-    @ManyToOne
-    @JoinColumn(name = "forecast_item_id")
-    private ForecastItem forecastItem;
+//    @ManyToOne
+//    @JoinColumn(name = "forecast_item_id")
+//    private ForecastItem forecastItem;
 }
 

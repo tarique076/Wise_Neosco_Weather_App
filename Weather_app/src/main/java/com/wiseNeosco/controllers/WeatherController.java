@@ -20,4 +20,9 @@ public class WeatherController {
     public WeatherInfo getWeatherData(@PathVariable String cityName) {
         return weatherService.getWeatherData(cityName);
     }
+	
+	@GetMapping("/{lat}/{lon}")
+    public WeatherInfo getWeatherData(@PathVariable Double lat, @PathVariable Double lon) {
+        return weatherService.getWeatherDataByLatLong(lat,lon);
+    }
 }

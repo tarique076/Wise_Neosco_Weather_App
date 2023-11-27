@@ -14,4 +14,7 @@ public interface WeatherInfoDao extends JpaRepository<WeatherInfo, Long>{
 	
 	@Query("select w from WeatherInfo w where w.name = :city and w.dt >= :epochTime")
 	public Optional<WeatherInfo> findByCityAndTime(String city, Long epochTime);
+	
+	@Query("select w from WeatherInfo w where floor(w.coord.lat) = floor(:lat) and floor(w.coord.lon) = floor(:lon) and w.dt >= :epochTime")
+	public Optional<WeatherInfo> findByLatAndTime(Double lat, Double lon, Long epochTime);
 }

@@ -14,4 +14,7 @@ public interface ForecastDao extends JpaRepository<ForecastData, Long>{
 
 	@Query("select f from ForecastData f where f.city.name = :city and timestamp >= :timestamp")
 	public Optional<ForecastData> findByTimeAndCity(String city, LocalDateTime timestamp);
+	
+	@Query("select f from ForecastData f where floor(f.city.coord.lat) = floor(:lat) and floor(f.city.coord.lon) = floor(:lon) and timestamp < :timestamp")
+	public Optional<ForecastData> findByLatAndTime(Double lat, Double lon, LocalDateTime timestamp);
 }
