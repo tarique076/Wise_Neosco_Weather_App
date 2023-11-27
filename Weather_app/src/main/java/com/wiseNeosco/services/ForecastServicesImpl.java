@@ -1,8 +1,7 @@
 package com.wiseNeosco.services;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,11 +57,11 @@ public class ForecastServicesImpl implements ForecastServices {
 		lon = Math.round(lon * 10000.0) / 10000.0;
 		
 		// Check if data is present in DB.
-		Optional<ForecastData> forecastDataOpt = fDao.findByLatAndTime(lat, lon, LocalDateTime.now().plusDays(1));
+		List<ForecastData> forecastDataOpt = fDao.findByLatAndTime(lat, lon, LocalDateTime.now().plusDays(1));
 
 		// If data is present in DB, then return.
-		if (forecastDataOpt.isPresent() && forecastDataOpt.get() != null) {
-			return forecastDataOpt.get();
+		if (!forecastDataOpt.isEmpty() && forecastDataOpt.get(0) != null) {
+			return forecastDataOpt.get(0);
 		}
 
 		// If data is not present in DB, fetch from OpenWeather API.

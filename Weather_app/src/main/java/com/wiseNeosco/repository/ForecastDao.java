@@ -1,6 +1,7 @@
 package com.wiseNeosco.repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,5 +17,5 @@ public interface ForecastDao extends JpaRepository<ForecastData, Long>{
 	public Optional<ForecastData> findByTimeAndCity(String city, LocalDateTime timestamp);
 	
 	@Query("select f from ForecastData f where floor(f.city.coord.lat) = floor(:lat) and floor(f.city.coord.lon) = floor(:lon) and timestamp < :timestamp")
-	public Optional<ForecastData> findByLatAndTime(Double lat, Double lon, LocalDateTime timestamp);
+	public List<ForecastData> findByLatAndTime(Double lat, Double lon, LocalDateTime timestamp);
 }

@@ -3,6 +3,7 @@ package com.wiseNeosco.services;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,12 +73,12 @@ public class WeatherServicesImpl implements WeatherService {
 		// current time.
 		lat = Math.round(lat * 10000.0) / 10000.0;
 		lon = Math.round(lon * 10000.0) / 10000.0;
-		Optional<WeatherInfo> weatherDataOpt = weatherInfoDao.findByLatAndTime(lat, lon,
+		List<WeatherInfo> weatherDataOpt = weatherInfoDao.findByLatAndTime(lat, lon,
 				epochTime);
 
 		// If data is present in db, return the data from db.
-		if (weatherDataOpt.isPresent() && weatherDataOpt.get() != null) {
-			return weatherDataOpt.get();
+		if (!weatherDataOpt.isEmpty() && weatherDataOpt.get(0) != null) {
+			return weatherDataOpt.get(0);
 		}
 
 		// If data not in db, fetch data from OpenWeather API.

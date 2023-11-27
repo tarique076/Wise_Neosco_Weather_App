@@ -67,6 +67,14 @@ body{
 	cursor: default;
 }
 
+#sunriseTemp{
+	text-align: left;
+}
+
+#sunsetTemp{
+	text-align: right;	
+}
+
 .weather_details p{
 	cursor: default;
 	color: #313131;
@@ -113,4 +121,29 @@ body{
 
 #forecastContainer div{
 	cursor: default;
+}
+
+
+@media (max-width: 1200px){
+	.container{
+		width: 50%;
+	}
+}
+
+@media (max-width: 1005px){
+	.container{
+		width: 60%;
+	}
+}
+
+@media (max-width: 850px){
+	.container{
+		width: 80%;
+	}
+}
+
+@media (max-width: 500px){
+	.container{
+		width: 90%;
+	}
 }

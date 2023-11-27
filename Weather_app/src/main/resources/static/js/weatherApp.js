@@ -152,12 +152,14 @@ function appendData(data){
     sunDiv.setAttribute('class','weather_details');
     let sunrise=document.createElement('p');
 	sunrise.setAttribute('title', 'Sunrise');
+	sunrise.setAttribute('id', 'sunriseTemp');
     let sunriseTime = convertUnixTimeToDateTime(data.sys.sunrise);
     sunrise.innerHTML=`<i class="fa-solid fa-sun" style="color: #ece509;"></i> ${sunriseTime}`
     sunDiv.append(sunrise);
     
     let sunset=document.createElement('p');
 	sunset.setAttribute('title', 'Sunset');
+	sunset.setAttribute('id', 'sunsetTemp');
     let sunsetTime = convertUnixTimeToDateTime(data.sys.sunset);
     sunset.innerHTML=`<i class="fa-solid fa-cloud-sun" style="color: #bc5b01;"></i> ${sunsetTime}`
     sunDiv.append(sunset);
@@ -270,3 +272,11 @@ function displayHourlyForecast(data) {
         hourlyContainer.append(time ,forecastEntry);
     });
 }
+
+// Function to reload the page
+function reloadPage() {
+    location.reload(true);
+}
+
+// Timeout set to reload the page every 30 minutes (30 * 60 * 1000 milliseconds)
+setTimeout(reloadPage, 30 * 60 * 1000);
